@@ -16,6 +16,7 @@ public class DynamicFontTextureBinding : MonoBehaviour {
 		Debug.Log(jc);
 	}
 #endif
+	
 #if UNITY_IPHONE
 	[DllImport("__Internal")]
     private static extern string _writeOnGLTexture(int textureID, string text, string fontName, int fontSize, int width, int height);
@@ -29,13 +30,32 @@ public class DynamicFontTextureBinding : MonoBehaviour {
 		else
 		{
 #if UNITY_IPHONE
-			_writeOnGLTexture(textureToWrite.GetNativeTextureID(),text,fontName,fontSize,width,height);
+			_writeOnGLTexture(textureToWrite.GetNativeTextureID(),text,fontName,(int)alignment,fontSize,width,height);
 #endif
 #if UNITY_ANDROID
 			LoadJC();
+			//To do: Support Android Properly
 			//jc.CallStatic("textToBitmapByList",textureToWrite.GetNativeTextureID(),text,width,height,(int)alignment,fontName,fontSize);
 			jc.CallStatic("textToBitmapByList",textureToWrite.GetNativeTextureID(),text);
 #endif
 		}
+    }
+
+#if UNITY_IPHONE
+	[DllImport("__Internal")]
+	private static extern int _widthWithFont(string text, string fontName, int fontSize);
+#endif
+    public static int WidthWithFont(string text, string fontName, int fontSize)
+    {
+#if UNITY_IPHONE
+		if( Application.platform == RuntimePlatform.IPhonePlayer )
+		{
+			return _widthWithFont(text,fontName,fontSize);
+		}
+		else return 0;
+#else
+		//To do: Support Android
+		return 0;
+#endif
     }
 }

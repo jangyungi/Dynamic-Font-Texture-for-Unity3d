@@ -49,6 +49,12 @@ void UnitySendMessage( const char * className, const char * methodName, const ch
     }
 }
 
+-(int) widthWithFont:(NSString*)text fontName:(NSString*)fontName fontSize:(int)fontSize
+{
+    UIFont* font=[UIFont fontWithName:fontName size:fontSize];
+    return ((CGSize)[text sizeWithFont:font]).width;
+}
+
 - (int) nextPoT:(int)size
 {
     size = size - 1;

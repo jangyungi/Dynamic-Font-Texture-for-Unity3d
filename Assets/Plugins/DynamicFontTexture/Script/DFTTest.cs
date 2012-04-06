@@ -2,10 +2,14 @@ using UnityEngine;
 using System.Collections;
 
 public class DFTTest : MonoBehaviour {
+	
+	#region Public Fields
 	[SerializeField]
 	private int width;
 	[SerializeField]
 	private int height;
+	public string fontName;
+	public int fontSize;
 	[SerializeField]
 	private string currentlyShowing;
 	public string CurrentlyShowing
@@ -14,13 +18,15 @@ public class DFTTest : MonoBehaviour {
 			return currentlyShowing;
 		}
 	}
-	public string fontName;
-	public int fontSize;
+	#endregion
+	
+	#region Private Fields
 	//For checking whether this scripts is inited
 	private bool isInited;	
 	//Texture to write on
 	private Texture textureToUse;
-
+	#endregion
+	
 	void Start () {
 		Init();
 		SetString(currentlyShowing);
@@ -48,7 +54,10 @@ public class DFTTest : MonoBehaviour {
 		DynamicFontTextureBinding.WriteOnTexture(textureToUse,contents,fontName,alignment,fontSize,width,height);
 		//Use the texture for this GameObject's renderer.
 		this.transform.renderer.material.SetTexture("_MainTex",textureToUse);
-		this.transform.renderer.material.color=new Color(1f,1f,1f,1f);
+		this.transform.renderer.material.color=new Color(this.transform.renderer.material.color.r,
+			this.transform.renderer.material.color.g,
+			this.transform.renderer.material.color.b,
+			1f);
 		currentlyShowing=contents;
 	}
 }
