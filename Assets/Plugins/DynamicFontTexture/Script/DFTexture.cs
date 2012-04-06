@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DFTTest : MonoBehaviour {
+public class DFTexture : MonoBehaviour {
 	
 	#region Public Fields
 	[SerializeField]
