@@ -19,7 +19,7 @@ public class DynamicFontTextureBinding : MonoBehaviour {
 	
 #if UNITY_IPHONE
 	[DllImport("__Internal")]
-    private static extern string _writeOnGLTexture(int textureID, string text, string fontName, int fontSize, int width, int height);
+    private static extern void _writeOnGLTexture(int textureID, string text, string fontName, int alignment, int fontSize, int width, int height);
 #endif
     public static void WriteOnTexture(Texture textureToWrite, string text, string fontName, DFTAlignment alignment, int fontSize, int width, int height)
     {
