@@ -13,7 +13,6 @@ public class DynamicFontTextureBinding : MonoBehaviour {
 		if( jc!=null)return;
 		if( Application.platform != RuntimePlatform.Android ) return;
 		jc=new AndroidJavaClass("com.crystani.dft.DFTFont");
-		Debug.Log(jc);
 	}
 #endif
 	
@@ -34,9 +33,8 @@ public class DynamicFontTextureBinding : MonoBehaviour {
 #endif
 #if UNITY_ANDROID
 			LoadJC();
-			//To do: Support Android Properly
-			//jc.CallStatic("textToBitmapByList",textureToWrite.GetNativeTextureID(),text,width,height,(int)alignment,fontName,fontSize);
-			jc.CallStatic("textToBitmapByList",textureToWrite.GetNativeTextureID(),text);
+			string combinedValues=width.ToString()+"_"+height.ToString()+"_"+((int)alignment).ToString()+"_"+fontSize;
+			if( jc!=null)jc.CallStatic("textToBitmap",textureToWrite.GetNativeTextureID(),text,fontName,combinedValues);
 #endif
 		}
     }
@@ -48,13 +46,15 @@ public class DynamicFontTextureBinding : MonoBehaviour {
     public static int WidthWithFont(string text, string fontName, int fontSize)
     {
 #if UNITY_IPHONE
-		if( Application.platform == RuntimePlatform.IPhonePlayer )
+		return _widthWithFont(text,fontName,fontSize);
+#elif UNITY_ANDROID
+		LoadJC();
+		if( jc!=null)
 		{
-			return _widthWithFont(text,fontName,fontSize);
+			return jc.CallStatic<int>("widthWithFont",text,fontName,fontSize);
 		}
 		else return 0;
 #else
-		//To do: Support Android
 		return 0;
 #endif
     }

@@ -14,20 +14,37 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.Matrix;
 import android.opengl.GLUtils;
+import android.os.Debug;
+import android.util.Log;
 
 public class DFTFont {
 	private static HashMap<String, Typeface> typefaces = new HashMap<String, Typeface>();
 	
-	public static void textToBitmapByList(int textureID,String text)
+	public static int widthWithFont(String text, String fontName, int fontSize)
 	{
-		textToBitmap(textureID,text,256,256,0,"sans",24);
+		Paint textPaint = new Paint();
+		Typeface typeface=typeFaceCache(fontName);
+	    textPaint.setTypeface(typeface);
+	    textPaint.setTextSize(fontSize);
+	    textPaint.setAntiAlias(true);
+	    return (int)textPaint.measureText(text);
 	}
 	
-	public static void textToBitmap(int textureID,String text, int width, int height, int alignment, String fontname, float fontSize) {
+	public static void textToBitmap(int textureID,String text,String fontName,String combinedValues)
+	{
+		String[] array=combinedValues.split("_");
+		int width=Integer.parseInt(array[0]);
+		int height=Integer.parseInt(array[1]);
+		int alignment=Integer.parseInt(array[2]);
+		int fontSize=Integer.parseInt(array[3]);
+		textToBitmap(textureID,text,width,height,alignment,fontName,fontSize);
+	}
+	
+	private static void textToBitmap(int textureID,String text, int width, int height, int alignment, String fontName, float fontSize) {
     	
 		//Get Typeface
-		Typeface typeface=typeFaceCache(fontname);
-
+		Typeface typeface=typeFaceCache(fontName);
+        
         Paint textPaint = new Paint();
         textPaint.setTypeface(typeface);
         textPaint.setTextSize(fontSize);
@@ -35,10 +52,10 @@ public class DFTFont {
         
         float ascent = -textPaint.ascent(); 
         float descent = textPaint.descent();
-
+        
         int textHeight = (int)(ascent + descent);
         int spacing = (int) Math.ceil((ascent + descent) * 0.1f);
-
+        
         //Get power of 2 size for bitmap
         int widthPow2 = toPow2(width);
         int heightPow2 = toPow2(height);
@@ -61,9 +78,10 @@ public class DFTFont {
         for(int i = 0; i < wrapped.size(); ++i)
         {
         	String str = wrapped.get(i);
+            
         	float offset = 0;
         	float vOffset = 0;
-
+            
 	        switch (alignment) {
 	        		//Left
 	            case 0:
@@ -79,10 +97,10 @@ public class DFTFont {
 	            	vOffset = (height - blockHeight) * 0.5f;
 	                break;
 	        }
-	        canvas.drawText(str,offset,-1*(vOffset + ascent + ((textHeight + spacing) * i)),textPaint);
+	        canvas.drawText(str,offset,-1*(vOffset + ascent + ((textHeight + spacing) * (wrapped.size()-i))),textPaint);
         }
         
-
+        
         //Write on the texture with textureID with bitmap
         EGL10 egl = (EGL10)EGLContext.getEGL(); 
         GL10 gl = (GL10)egl.eglGetCurrentContext().getGL();
@@ -121,16 +139,16 @@ public class DFTFont {
 	protected static ArrayList<String> WrapText(Paint textPaint, String text, float width)
     {
         float spaceLeft = width;
-
+        
         String [] words = text.split(" ");
         ArrayList<String> lines = new ArrayList<String>();
         float spaceWidth = textPaint.measureText(" ");
         StringBuilder tempLine = new StringBuilder("");
-
+        
         for(String word : words)
         {
             float wordWidth = textPaint.measureText(word);
-
+            
             if (wordWidth > spaceLeft) {
             	if(tempLine.length() > 0) {
                 	tempLine.deleteCharAt(tempLine.length() - 1);
@@ -140,7 +158,7 @@ public class DFTFont {
                 
                 tempLine = new StringBuilder("");
                 tempLine.append(word);
-
+                
                 spaceLeft = width - (wordWidth + spaceWidth);
             }
             else
@@ -148,16 +166,18 @@ public class DFTFont {
                 tempLine.append(word);
                 spaceLeft -= (wordWidth + spaceWidth);
             }
-
+            
             tempLine.append(" ");
         }
         
         if(tempLine.length() > 0) {
         	tempLine.deleteCharAt(tempLine.length() - 1);
         }
-
+        
         lines.add(tempLine.toString());
-
+        
+        
+        
         return lines;
     }
 }
