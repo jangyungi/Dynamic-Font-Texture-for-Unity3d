@@ -74,14 +74,10 @@ public class DFTFont {
         
         //Write on canvas
         ArrayList<String> wrapped = WrapText(textPaint, text, width);
-        float blockHeight = (ascent + descent) * wrapped.size();
         for(int i = 0; i < wrapped.size(); ++i)
         {
         	String str = wrapped.get(i);
-            
         	float offset = 0;
-        	float vOffset = 0;
-            
 	        switch (alignment) {
 	        		//Left
 	            case 0:
@@ -94,10 +90,9 @@ public class DFTFont {
 	                //Center
 	            case 2:
 	            	offset = (width - textPaint.measureText(str)) * 0.5f;
-	            	vOffset = (height - blockHeight) * 0.5f;
 	                break;
 	        }
-	        canvas.drawText(str,offset,-1*(vOffset + ascent + ((textHeight + spacing) * (wrapped.size()-i))),textPaint);
+	        canvas.drawText(str,offset,ascent-height+((textHeight + spacing) * i),textPaint);
         }
         
         
@@ -138,45 +133,22 @@ public class DFTFont {
 	//Get Wraped text
 	protected static ArrayList<String> WrapText(Paint textPaint, String text, float width)
     {
-        float spaceLeft = width;
-        
-        String [] words = text.split(" ");
         ArrayList<String> lines = new ArrayList<String>();
-        float spaceWidth = textPaint.measureText(" ");
         StringBuilder tempLine = new StringBuilder("");
         
-        for(String word : words)
+        for(char character : text.toCharArray())
         {
-            float wordWidth = textPaint.measureText(word);
-            
-            if (wordWidth > spaceLeft) {
-            	if(tempLine.length() > 0) {
-                	tempLine.deleteCharAt(tempLine.length() - 1);
-                }
-            	
+            if (textPaint.measureText(tempLine.toString())+textPaint.measureText(new char[]{character},0,1) > width) {
                 lines.add(tempLine.toString());
-                
                 tempLine = new StringBuilder("");
-                tempLine.append(word);
-                
-                spaceLeft = width - (wordWidth + spaceWidth);
             }
-            else
-            {
-                tempLine.append(word);
-                spaceLeft -= (wordWidth + spaceWidth);
-            }
-            
-            tempLine.append(" ");
+            tempLine.append(character);
         }
         
+        //If there's left temp line...
         if(tempLine.length() > 0) {
-        	tempLine.deleteCharAt(tempLine.length() - 1);
+        	lines.add(tempLine.toString());
         }
-        
-        lines.add(tempLine.toString());
-        
-        
         
         return lines;
     }
