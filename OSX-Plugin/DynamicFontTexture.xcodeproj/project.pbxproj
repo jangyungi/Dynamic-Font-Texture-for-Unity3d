@@ -1,0 +1,294 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		000EDFD9156E0509004BD8EE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000EDFD8156E0509004BD8EE /* Cocoa.framework */; };
+		000EDFE3156E0509004BD8EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 000EDFE1156E0509004BD8EE /* InfoPlist.strings */; };
+		000EDFF4156E0AE8004BD8EE /* DFTBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 000EDFF1156E0AE8004BD8EE /* DFTBinding.m */; };
+		000EDFF5156E0AE8004BD8EE /* DFTManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 000EDFF3156E0AE8004BD8EE /* DFTManager.mm */; };
+		00196A3715709111006109E3 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000EDFDB156E0509004BD8EE /* AppKit.framework */; };
+		00196A3A1570916F006109E3 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00196A391570916F006109E3 /* ApplicationServices.framework */; };
+		00196A3C15709257006109E3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00196A3B15709257006109E3 /* OpenGL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		000EDFD5156E0509004BD8EE /* DynamicFontTexture.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynamicFontTexture.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		000EDFD8156E0509004BD8EE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		000EDFDB156E0509004BD8EE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		000EDFDC156E0509004BD8EE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		000EDFDD156E0509004BD8EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		000EDFE0156E0509004BD8EE /* DynamicFontTexture-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DynamicFontTexture-Info.plist"; sourceTree = "<group>"; };
+		000EDFE2156E0509004BD8EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		000EDFE4156E0509004BD8EE /* DynamicFontTexture-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DynamicFontTexture-Prefix.pch"; sourceTree = "<group>"; };
+		000EDFF1156E0AE8004BD8EE /* DFTBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTBinding.m; sourceTree = "<group>"; };
+		000EDFF2156E0AE8004BD8EE /* DFTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTManager.h; sourceTree = "<group>"; };
+		000EDFF3156E0AE8004BD8EE /* DFTManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DFTManager.mm; sourceTree = "<group>"; };
+		000EDFF6156E0BFB004BD8EE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		00196A391570916F006109E3 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		00196A3B15709257006109E3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		00196A3D15709AE4006109E3 /* DFTBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFTBinding.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		000EDFD2156E0509004BD8EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00196A3C15709257006109E3 /* OpenGL.framework in Frameworks */,
+				00196A3A1570916F006109E3 /* ApplicationServices.framework in Frameworks */,
+				00196A3715709111006109E3 /* AppKit.framework in Frameworks */,
+				000EDFD9156E0509004BD8EE /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000EDFCA156E0509004BD8EE = {
+			isa = PBXGroup;
+			children = (
+				00196A3B15709257006109E3 /* OpenGL.framework */,
+				00196A391570916F006109E3 /* ApplicationServices.framework */,
+				000EDFF6156E0BFB004BD8EE /* CoreFoundation.framework */,
+				000EDFDE156E0509004BD8EE /* DynamicFontTexture */,
+				000EDFD7156E0509004BD8EE /* Frameworks */,
+				000EDFD6156E0509004BD8EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		000EDFD6156E0509004BD8EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				000EDFD5156E0509004BD8EE /* DynamicFontTexture.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		000EDFD7156E0509004BD8EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				000EDFD8156E0509004BD8EE /* Cocoa.framework */,
+				000EDFDA156E0509004BD8EE /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		000EDFDA156E0509004BD8EE /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				000EDFDB156E0509004BD8EE /* AppKit.framework */,
+				000EDFDC156E0509004BD8EE /* CoreData.framework */,
+				000EDFDD156E0509004BD8EE /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		000EDFDE156E0509004BD8EE /* DynamicFontTexture */ = {
+			isa = PBXGroup;
+			children = (
+				000EDFF0156E0AE8004BD8EE /* Classes */,
+				000EDFDF156E0509004BD8EE /* Supporting Files */,
+			);
+			path = DynamicFontTexture;
+			sourceTree = "<group>";
+		};
+		000EDFDF156E0509004BD8EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				000EDFE0156E0509004BD8EE /* DynamicFontTexture-Info.plist */,
+				000EDFE1156E0509004BD8EE /* InfoPlist.strings */,
+				000EDFE4156E0509004BD8EE /* DynamicFontTexture-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		000EDFF0156E0AE8004BD8EE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				000EDFF1156E0AE8004BD8EE /* DFTBinding.m */,
+				000EDFF2156E0AE8004BD8EE /* DFTManager.h */,
+				000EDFF3156E0AE8004BD8EE /* DFTManager.mm */,
+				00196A3D15709AE4006109E3 /* DFTBinding.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		000EDFD4156E0509004BD8EE /* DynamicFontTexture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000EDFE7156E0509004BD8EE /* Build configuration list for PBXNativeTarget "DynamicFontTexture" */;
+			buildPhases = (
+				000EDFD1156E0509004BD8EE /* Sources */,
+				000EDFD2156E0509004BD8EE /* Frameworks */,
+				000EDFD3156E0509004BD8EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DynamicFontTexture;
+			productName = DynamicFontTexture;
+			productReference = 000EDFD5156E0509004BD8EE /* DynamicFontTexture.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000EDFCC156E0509004BD8EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 000EDFCF156E0509004BD8EE /* Build configuration list for PBXProject "DynamicFontTexture" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 000EDFCA156E0509004BD8EE;
+			productRefGroup = 000EDFD6156E0509004BD8EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				000EDFD4156E0509004BD8EE /* DynamicFontTexture */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		000EDFD3156E0509004BD8EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000EDFE3156E0509004BD8EE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		000EDFD1156E0509004BD8EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000EDFF4156E0AE8004BD8EE /* DFTBinding.m in Sources */,
+				000EDFF5156E0AE8004BD8EE /* DFTManager.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		000EDFE1156E0509004BD8EE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				000EDFE2156E0509004BD8EE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		000EDFE5156E0509004BD8EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		000EDFE6156E0509004BD8EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		000EDFE8156E0509004BD8EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DynamicFontTexture/DynamicFontTexture-Prefix.pch";
+				INFOPLIST_FILE = "DynamicFontTexture/DynamicFontTexture-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		000EDFE9156E0509004BD8EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DynamicFontTexture/DynamicFontTexture-Prefix.pch";
+				INFOPLIST_FILE = "DynamicFontTexture/DynamicFontTexture-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		000EDFCF156E0509004BD8EE /* Build configuration list for PBXProject "DynamicFontTexture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000EDFE5156E0509004BD8EE /* Debug */,
+				000EDFE6156E0509004BD8EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		000EDFE7156E0509004BD8EE /* Build configuration list for PBXNativeTarget "DynamicFontTexture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000EDFE8156E0509004BD8EE /* Debug */,
+				000EDFE9156E0509004BD8EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 000EDFCC156E0509004BD8EE /* Project object */;
+}
