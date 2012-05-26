@@ -24,7 +24,6 @@ void UnitySendMessage( const char * className, const char * methodName, const ch
 
 - (void) writeOnTexture:(NSString*)text textureID:(int)textureID textureSize:(CGSize)dimensions alignment:(NSTextAlignment)alignment lineBreakMode:(NSLineBreakMode)lineBreakMode fontName:(NSString*)fontName fontSize:(int)fontSize
 {
-    NSFont* font=[NSFont fontWithName:fontName size:fontSize];
     NSUInteger PoTWidth=[self nextPoT:dimensions.width];
     NSUInteger PoTHeight=[self nextPoT:dimensions.height];
     unsigned char* data=(unsigned char *)calloc(PoTWidth,PoTHeight);
@@ -33,23 +32,35 @@ void UnitySendMessage( const char * className, const char * methodName, const ch
     CGContext* context = CGBitmapContextCreate(data, PoTWidth, PoTHeight, 8, PoTWidth, colorSpace, kCGImageAlphaNone);
     CGColorSpaceRelease(colorSpace);
 
-    if(!context)free(data);
-    else
-    {
+    if(!context) {
+        free(data);
+        NSLog(@"writeOnTexture: Can't create context!");
+    } else {
         CGContextSetGrayFillColor(context, 1.0f, 1.0f);
         CGContextScaleCTM(context, 1.0f, 1.0f);
+        
+        CGContextSetFillColorWithColor(context, CGColorCreateGenericRGB(1, 0, 0, 0.5));
 
-        CGContextSaveGState(context);
+        NSGraphicsContext *maskGraphicsContext = [NSGraphicsContext
+                                                  graphicsContextWithGraphicsPort:context flipped:YES];
+        [NSGraphicsContext saveGraphicsState];
+        [NSGraphicsContext setCurrentContext:maskGraphicsContext];
         //Write Text on specified position
-        NSMutableParagraphStyle* style = [[NSMutableParagraphStyle init] autorelease];
+        NSFont* font=[NSFont fontWithName:fontName size:fontSize];
+
+        NSLog(@"AAAA %@, %f, %f, %@", font, dimensions.width, dimensions.height, text);
+        
+        NSMutableParagraphStyle* style = [[[NSMutableParagraphStyle alloc] init] autorelease];
         [style setLineBreakMode:lineBreakMode];
         [style setAlignment:alignment];
         NSDictionary* attributes = [NSDictionary dictionaryWithObjectsAndKeys:
             font, NSFontAttributeName,
             style, NSParagraphStyleAttributeName,
+            [NSColor whiteColor], NSForegroundColorAttributeName,
+            [NSColor blackColor], NSBackgroundColorAttributeName,
                                     nil];
         [text drawInRect:NSRectFromCGRect(CGRectMake(0, 0, dimensions.width, dimensions.height)) withAttributes:attributes];
-        CGContextRestoreGState(context);
+        [NSGraphicsContext restoreGraphicsState];
 
         //Update GL Texture
         glBindTexture(GL_TEXTURE_2D, textureID);
